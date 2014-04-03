@@ -1,0 +1,18 @@
+Datamodel
+=========
+
+  Listing:
+    Name
+    Contact
+    I am a
+    Looking for
+    About
+    Collaborator/Project switch
+
+Features
+=======
+
+1. I can see existing listings
+2. I can create a new listing
+3. I can filter the listings displayed (collaborator/project/search)
+
