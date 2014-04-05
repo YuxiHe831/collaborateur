@@ -1,0 +1,17 @@
+<h1>Collaborateur</h1>
+ 
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email Address</th>
+    <th>Looking For</th>
+  </tr>
+ 
+  <% @profiles.each do |profile| %>
+    <tr>
+      <td><%= link_to profile.name, profile %></td>
+      <td><%= profile.email %></td>
+      <td><%= profile.kind %></td>
+    </tr>
+  <% end %>
+</table>

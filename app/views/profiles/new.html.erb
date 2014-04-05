@@ -1,4 +1,15 @@
-<%= form_for :post do |f| %>
+<%= form_for :profile, url: profiles_path do |f| %>
+  <% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited
+        this profile from being saved:</h2>
+      <ul>
+        <% @profile.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+ <% end %>
   <p>
     <%= f.label :name %><br>
     <%= f.text_field :name %>
@@ -11,8 +22,8 @@
 
   <p>
     <%= f.label :looking_for_a %><br>
-    <%= f.radio_button :person, :kind %> <%= f.label :person %><br>
-    <%= f.radio_button :project, :kind %> <%= f.label :project %><br>
+    <%= f.radio_button :kind, "person" %> <%= f.label :person %><br>
+    <%= f.radio_button :kind, "project" %> <%= f.label :project %><br>
   </p>
   
   <p>
