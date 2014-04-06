@@ -17,8 +17,7 @@ ActiveRecord::Schema.define(version: 20140403214719) do
     t.string   "name"
     t.string   "email"
     t.string   "kind"
-    t.text     "about_me"
-    t.text     "about_you"
+    t.text     "about"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

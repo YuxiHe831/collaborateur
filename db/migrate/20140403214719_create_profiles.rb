@@ -4,8 +4,7 @@ class CreateProfiles < ActiveRecord::Migration
       t.string :name
       t.string :email
       t.string :kind
-      t.text :about_me
-      t.text :about_you
+      t.text :about
 
       t.timestamps
     end
