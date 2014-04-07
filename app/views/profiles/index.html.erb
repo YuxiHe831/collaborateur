@@ -1,4 +1,13 @@
 <h1>Collaborateur</h1>
+
+<%= form_tag profiles_path, :method => 'get' do %>
+    <p>
+      <%= select_tag "search",
+                     options_for_select([["People", "People"],
+                                         ["Projects", "Projects"]]) %>
+      <%= submit_tag "Search", :name => nil %>
+    </p>
+<% end %>
  
 <table class="table table-hover">
   <tr>
