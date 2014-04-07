@@ -1,4 +1,5 @@
-<%= form_for :profile, url: profiles_path do |f| %>
+<%= bootstrap_form_for("profile", :url => profiles_path, :html => { :class => "form-horizontal"}) do |f| %>
+
   <% if @profile.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@profile.errors.count, "error") %> prohibited
@@ -10,34 +11,36 @@
       </ul>
     </div>
  <% end %>
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </p>
- 
-  <p>
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </p>
 
-  <p>
-    <%= f.label :I_am_looking_for %><br>
-    <%= f.radio_button :kind, "people" %> <%= f.label :people %><br>
-    <%= f.radio_button :kind, "projects" %> <%= f.label :projects %><br>
-    <div id="lookingForPeople">
-      <label>Enter a brief description of your project</label><br>
-      <%= f.text_area :about %>
+  <fieldset>
+    <legend>User Registration</legend>
+      <div class="col-lg-10">
+
+      <%= f.text_field :name %>
+      <%= f.text_field :email %>
+
+      <%= f.form_group :kind, label: { text: "I am Looking For" }, help: "Optional Help Text Placeholder" do %>
+        <%= f.radio_button :kind, "collaborateurs", label: "Collaborateurs"%>
+        <%= f.radio_button :kind, "a project", label: "A project" %>
+      <% end %>
+
+      <div id="lookingForPeople">
+        <%= f.text_area :about, label: "Enter a brief description about your project and the skills you are looking for in your collaborateurs." %>
+      </div>
+      <div id="lookingForProject">
+        <%= f.text_area :about, label: "Enter a brief description about your skills" %>
+      </div>
+   
+    <div class="form-actions">
+      <%= f.submit %>
     </div>
-    <div id="lookingForProject">
-      <label>Enter a brief description of your skills</label><br>
-      <%= f.text_area :about %>
-    </div>
-  </p>
- 
-  <p>
-    <%= f.submit %>
-  </p>
+
+  </div>
+  </fieldset>
 <% end %>
+
+</br>
+<p>Psst! You can also take a look at other collaborateur's <a href="/profiles">here</a>.
 
 <script>
 $(document).ready(function(){
@@ -46,11 +49,11 @@ $(document).ready(function(){
 
     $("input:radio[name='profile[kind]']").change(function(){  
 
-            if (this.value == 'projects' && this.checked){
+            if (this.value == 'a project' && this.checked){
               $("#lookingForPeople").hide();
               $("#lookingForProject").show();
             }
-            if (this.value == 'people' && this.checked) {
+            if (this.value == 'collaborateurs' && this.checked) {
               $("#lookingForProject").hide();
               $("#lookingForPeople").show();
             }
